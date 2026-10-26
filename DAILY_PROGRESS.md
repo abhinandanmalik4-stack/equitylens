@@ -59,3 +59,24 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 
 ### Blockers
 - Exchange, data provider, and final technology choices are still pending.
+
+## 2026-10-26
+
+### Completed
+- Cloned the existing private repository into E:\gpt\equitylens and verified main tracks origin/main.
+- Recorded the user's Python-first Streamlit direction and Indian-stocks-first scope, with US support deferred.
+- Prepared an eight-week roadmap with daily tasks, learning goals, outputs and milestone completion checks, plus a visual overview.
+- Saved important project conversation context, decisions, pending choices and a start-here index.
+- Updated README and the project brief to match the current direction.
+
+### Learning plan
+- Begin with Python environments, Git and Streamlit; then data handling, charts, storage, forecasting evaluation, retrieval and deployment.
+- These are learning objectives, not a claim that the user has mastered them.
+
+### Next steps
+- Start Week 1: set up the environment and run a minimal Streamlit page with labelled sample data.
+- Choose the real historical data provider after comparing coverage, cost and display rights.
+
+### Limitations
+- No application features, trained models, real-data integration or deployment are implemented yet.
+- This documentation save does not itself commit or push files to GitHub.

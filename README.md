@@ -14,9 +14,9 @@ Price values will come from stock-data tools. Forecast values will come from eva
 
 ## Initial scope and approach
 
-The proposed first version focuses on one exchange, 10–20 stocks, historical daily prices, company question answering, and one forecasting model. The exchange, data provider, and final technology choices are still to be decided.
+The proposed first version focuses on one Indian exchange, 10–20 stocks, historical daily prices, company question answering, and one forecasting model. US stocks are future scope. The exact exchange and data provider are still to be decided.
 
-Proposed components include a React interface with Lightweight Charts, a Python/FastAPI backend, and a retrieval-augmented AI chatbot that finds relevant passages in reliable documents before answering. The model pipeline will clean data, generate features, evaluate on chronological splits without data leakage, and report prediction errors and uncertainty.
+The accepted first-version direction is Python with Streamlit for the interface, Plotly for charts, pandas/NumPy for data processing, SQLite for persistence, and scikit-learn for model evaluation. No handwritten HTML, CSS or JavaScript is needed. A separate FastAPI service can be added later if useful. The planned retrieval-augmented chatbot will find relevant passages in reliable documents before answering. The model pipeline will clean data, generate features, evaluate on chronological splits without data leakage, and report prediction errors and uncertainty.
 
 Data availability, refresh frequency, and display rights will depend on the selected provider.
 
@@ -28,6 +28,11 @@ EquityLens is being developed as a final-year computer science engineering proje
 
 ## Project documentation
 
+- [Start here](START_HERE.md)
+- [Visual eight-week roadmap](docs/assets/equitylens-eight-week-roadmap.png)
+- [Detailed weekly learning and build plan](docs/WEEKLY_ROADMAP.md)
+- [Important conversation context](docs/PROJECT_CONTEXT.md)
+- [Decisions and pending choices](docs/DECISIONS.md)
 - [Project brief](EquityLens-Project.md)
 - [Daily progress](DAILY_PROGRESS.md)
 - [Manual progress-entry script](scripts/Add-DailyUpdate.ps1)
