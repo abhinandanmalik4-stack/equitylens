@@ -12,7 +12,7 @@ Last updated: 2026-10-26 (Asia/Calcutta). Planning document, not a record of com
 - At the start of each task: understand the idea. Then implement, verify, and explain it in your own words.
 - Finish the milestone checks before advancing. Provider access, learning time, and evidence quality may extend the schedule.
 - Git commits follow logical useful changes. Ten commits is an aspiration, not a reason to manufacture or split changes.
-- Current state: repository cloned and planning saved; application implementation has not started.
+- Current state: repository cloned, planning saved and demo dashboard foundation implemented with 19 passing local tests. Real data, evaluated models and cited AI remain planned. Review the foundation with the student before moving on; implementation does not mean the learning milestones are complete.
 
 ## Milestone overview
 

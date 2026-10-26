@@ -57,7 +57,7 @@ d.text((64, 160), "Python + Streamlit  /  Plotly  /  pandas + NumPy  /  SQLite  
 d.text((64, 211), "Indian stocks first. US support later. No handwritten HTML, CSS or JavaScript required.", font=font(24), fill="#E1EBE4")
 d.text((64, 316), "PLAN ASSUMPTION", font=font(20, True), fill=GREEN)
 d.text((64, 351), "1-2 hours/day, 5-6 days/week. Weeks start when development begins; dates are not fixed.", font=font(25), fill=INK)
-d.text((64, 389), "Current status: planning + repository setup only. All application milestones below are planned.", font=font(23), fill=MUTED)
+d.text((64, 389), "Current status: demo dashboard foundation built. Real data, model evaluation and cited AI are planned.", font=font(23), fill=MUTED)
 xs = [64, 365, 800, 1320]
 d.rectangle((48, 447, W - 48, 499), fill=GREEN)
 for x, label in zip(xs, ["WEEK / FOCUS", "LEARN", "BUILD", "DONE WHEN"]):

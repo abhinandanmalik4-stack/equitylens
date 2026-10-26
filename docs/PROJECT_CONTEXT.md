@@ -62,13 +62,13 @@ This is a curated handover of important project discussion, not a verbatim chat 
 
 ## Known completed work versus planned work
 
-Completed: initial project brief, private GitHub repository, expanded README/About, dated progress entries, manual log script in the repository, local clone, and the documentation/roadmap produced in this request.
+Completed: initial project brief, private GitHub repository, expanded README/About, dated progress entries, manual log script, local clone, documentation/roadmap, isolated Python environment, exchange-aware demo catalogue, validated synthetic daily data, price calculations, local SQLite watchlist, Plotly charts/comparison and native Streamlit dashboard. The first implementation has 19 passing local automated tests and a Windows/Linux GitHub Actions workflow.
 
-Not yet implemented in this checkout: Streamlit application, real data provider, charts, saved watchlist, trained/evaluated forecasts, document retrieval, chatbot or deployment. No application tests have been run because there is no application yet. Do not describe planned features as completed.
+Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
 
-Week 1 Day 1: inspect applicable repository instructions, choose supported Python/Streamlit versions, create an isolated environment, record dependencies and demonstrate a basic local Streamlit page. Explain what each step does.
+Walk through docs/RUN_AND_LEARN.md with the student and explain the implemented foundation. Next implementation milestone is provider selection/integration for historical Indian prices, after verifying costs and usage rights. The student has not yet demonstrated learning these features merely because the assistant wrote them.
 
 ## Keep this context useful
 

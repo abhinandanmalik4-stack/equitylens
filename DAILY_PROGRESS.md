@@ -80,3 +80,20 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 ### Limitations
 - No application features, trained models, real-data integration or deployment are implemented yet.
 - This documentation save does not itself commit or push files to GitHub.
+
+### Implementation milestone - later on October 26
+- Set up an isolated Python 3.13 environment and recorded tested dependencies.
+- Added ten Indian demo company identities with exchange/currency metadata and search.
+- Implemented a provider contract, reproducible synthetic OHLCV and validation with explicit provenance.
+- Added previous-close changes, selected-range returns and date-aligned normalized comparisons.
+- Implemented a persistent local SQLite watchlist with duplicate protection and proper connection cleanup.
+- Built Plotly line/candlestick, volume and comparison figures and a native Streamlit dashboard with labelled CSV export.
+- Added a GitHub Actions workflow for Python checks on Windows and Linux.
+- Completed 19 local tests, including Streamlit app interactions, and pip dependency checks successfully.
+- Recorded the first development batch in 10 logical commits, including this implementation guide/progress update.
+
+### Current limits and next action
+- Prices/volumes are invented fixtures ending 2026-10-23; they are not market observations and do not refresh.
+- No real provider, forecast, research chatbot, authentication or deployment is configured.
+- Local tests are headless; browser appearance/gestures and remote CI results remain separate checks.
+- Run the guided walkthrough with the student, then compare data providers and select a licensed historical source.

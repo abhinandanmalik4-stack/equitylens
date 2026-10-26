@@ -1,6 +1,28 @@
 # EquityLens — AI Stock Research Assistant
 
-EquityLens is a planned stock research website that brings price charts, company information, and machine learning forecasts into one place. It aims to help users explore how a stock has performed, understand the business behind it, and ask company questions through an AI assistant that cites reliable sources.
+EquityLens is a Python-first stock research project. Its first local milestone is a working Streamlit dashboard with explicitly synthetic prices; real market data, evaluated forecasts and cited company Q&A are upcoming milestones.
+
+## Run the local demo
+
+Requires Python; 3.13 is the tested version. From this checkout:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-lock.txt -e .
+.venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
+```
+
+The environment is already set up on the current development machine. Open the Local URL printed by Streamlit. [Setup, checks and guided walkthrough](docs/RUN_AND_LEARN.md).
+
+## Available in milestone 1
+
+- Search a ten-company Indian demo catalogue.
+- Explore line/candlestick charts, volume and observation-range price changes.
+- Compare synthetic paths on matching dates with a common starting value of 100.
+- Save a local single-user SQLite watchlist across restarts.
+- Inspect/download labelled synthetic observations with source metadata.
+
+**Every price and volume is invented demo data**, fixed through October 23, 2026. It does not represent actual company performance or current market prices. Research and forecast panels explain future work; they do not generate answers or predictions.
 
 ## Planned features
 
@@ -22,13 +44,18 @@ Data availability, refresh frequency, and display rights will depend on the sele
 
 ## Project status
 
-**Planning stage — application implementation has not started.** The features above describe the intended direction, not functionality currently available.
+**October 26, 2026: local demo foundation implemented.** Real data-provider integration, trained/evaluated models, document retrieval, AI chat, authentication and deployment are not implemented. The remaining planned features are the intended direction, not claims about available functionality.
+
+Validation: 19 local automated tests pass for catalogue, data checks, calculations, figures, watchlist persistence and Streamlit interactions. Remote Windows/Linux checks are configured in GitHub Actions; their actual result must be checked after the push. Browser layout and gestures have not been visually verified.
 
 EquityLens is being developed as a final-year computer science engineering project to build practical skills in full-stack development, data engineering, machine learning, and AI applications. The intended outcome is a working demo with clear architecture, reproducible evaluation, baseline comparisons, and useful documentation.
 
 ## Project documentation
 
 - [Start here](START_HERE.md)
+- [Run and learn](docs/RUN_AND_LEARN.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Data contract and demo provenance](docs/DATA_CONTRACT.md)
 - [Visual eight-week roadmap](docs/assets/equitylens-eight-week-roadmap.png)
 - [Detailed weekly learning and build plan](docs/WEEKLY_ROADMAP.md)
 - [Important conversation context](docs/PROJECT_CONTEXT.md)

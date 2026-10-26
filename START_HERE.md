@@ -13,9 +13,9 @@ Your Python-first AI Stock Research Assistant. Indian stocks first, future US su
 
 ## Current position
 
-Repository cloned into E:\gpt\equitylens. Planning saved. Application implementation has not started.
+Repository cloned into E:\gpt\equitylens. Planning saved. A local Streamlit demo dashboard is implemented and its 19 automated tests pass. All prices and volumes remain synthetic; real data, forecasting and AI research are future milestones.
 
-First development task: Week 1 Day 1 - environment setup, dependencies and a simple local Streamlit page.
+Start with [Run and learn](docs/RUN_AND_LEARN.md) for launch instructions and a guided walkthrough, then review [Architecture](docs/ARCHITECTURE.md). Next data task: select a real historical-data provider.
 
 ## Learning order
 
@@ -32,4 +32,4 @@ No handwritten HTML, CSS or JavaScript is needed for the first version. A separa
 5. Keep the existing GitHub repository private and credentials outside Git.
 6. Save important new decisions here through linked documentation; update the log only for real work.
 
-The roadmap is a plan, not evidence that features are built. This local documentation package has not been committed or pushed by this save request.
+The roadmap is a plan, not evidence that every feature is built. The initial development batch commits the plan and working foundation together with tests and updated progress. Check Git history for the exact pushed changes.
