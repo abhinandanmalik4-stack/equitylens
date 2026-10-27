@@ -51,3 +51,20 @@ def normalized_comparison(a: pd.DataFrame, b: pd.DataFrame) -> pd.DataFrame:
     for column in ("close_a", "close_b"):
         common[column] = 100 * common[column] / common[column].iloc[0]
     return common
+
+
+def calendar_window(frame: pd.DataFrame, start, end) -> pd.DataFrame:
+    """Inclusive date selection; return no rows for a window without observations."""
+    frame = validate_history(frame)
+    bounds = []
+    for value in (start, end):
+        if isinstance(value, (int, float, bool)):
+            raise ValueError("Select explicit calendar dates.")
+        stamp = pd.Timestamp(value)
+        if pd.isna(stamp) or stamp.tzinfo is not None or stamp != stamp.normalize():
+            raise ValueError("Range boundaries must be timezone-naive daily dates.")
+        bounds.append(stamp)
+    start, end = bounds
+    if start > end:
+        raise ValueError("Start date must not be after end date.")
+    return frame.loc[frame.date.between(start, end)].copy().reset_index(drop=True)

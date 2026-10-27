@@ -2,7 +2,7 @@ import unittest
 
 import pandas as pd
 
-from equitylens.analytics import normalized_comparison, range_history, summarize
+from equitylens.analytics import calendar_window, normalized_comparison, range_history, summarize
 
 
 def fixture(prices=(100, 110, 99), start="2026-01-01"):
@@ -13,6 +13,15 @@ def fixture(prices=(100, 110, 99), start="2026-01-01"):
 
 
 class AnalyticsTests(unittest.TestCase):
+    def test_calendar_boundaries_are_inclusive_without_inventing_dates(self):
+        frame = fixture()
+        visible = calendar_window(frame, "2026-01-02", "2026-01-03")
+        self.assertEqual(visible.close.tolist(), [110, 99])
+        self.assertTrue(calendar_window(frame, "2026-02-01", "2026-02-02").empty)
+        for start, end in [("2026-01-03", "2026-01-01"), (1, 2), ("2026-01-01 12:00", "2026-01-03")]:
+            with self.assertRaises(ValueError):
+                calendar_window(frame, start, end)
+
     def test_previous_session_not_range_start(self):
         full = fixture()
         result = summarize(full, full.iloc[-2:])
