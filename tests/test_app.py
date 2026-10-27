@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -79,6 +80,45 @@ class AppTests(unittest.TestCase):
             app = self.start()
             self.assertTrue(app.button(key="watchlist_action").disabled)
             self.assertEqual(len(app.metric), 4)
+
+    def test_upload_is_company_scoped_and_bad_replacement_clears_chart(self):
+        raw = b"date,open,high,low,close,volume\n2026-01-02,100,110,100,110,1000\n2026-01-05,110,110,108,108,900\n"
+        upload = SimpleNamespace(getvalue=lambda: raw)
+        # AppTest cannot drive the browser's file picker. Mock only that boundary;
+        # exercise the actual form, parser, state, metrics and chart code.
+        with patch("streamlit.file_uploader", return_value=upload):
+            app = self.start()
+            app.segmented_control(key="data_mode").set_value("CSV upload").run()
+            self.assertEqual(len(app.metric), 0)
+            app.text_input(key="source:NSE:RELIANCE").set_value("Local test fixture")
+            app.checkbox(key="demo:NSE:RELIANCE").uncheck()
+            app.form_submit_button(key="load_csv").click().run()
+            self.assertFalse(app.exception)
+            self.assertEqual(app.metric[0].value, "108.00")
+            self.assertTrue(any("unverified" in item.value for item in app.warning))
+            self.assertFalse(any(s.label == "Compare with" for s in app.selectbox))
+            app.selectbox(key="instrument").select("NSE:TCS").run()
+            self.assertFalse(app.exception)
+            self.assertEqual(len(app.metric), 0)
+            app.selectbox(key="instrument").select("NSE:RELIANCE").run()
+            self.assertEqual(app.metric[0].value, "108.00")
+            upload.getvalue = lambda: b"not,a,valid,price,file"
+            app.form_submit_button(key="load_csv").click().run()
+            self.assertFalse(app.exception)
+            self.assertEqual(len(app.metric), 0)
+            self.assertTrue(any("CSV rejected" in error.value for error in app.error))
+
+    def test_custom_dates_and_single_observation_do_not_crash(self):
+        from datetime import date
+
+        app = self.start()
+        app.toggle(key="custom_dates").set_value(True).run()
+        app.date_input[0].set_value((date(2026, 10, 23), date(2026, 10, 23))).run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("only one observation" in c.value for c in app.caption))
+        app.date_input[0].set_value((date(2026, 1, 3), date(2026, 1, 4))).run()
+        self.assertFalse(app.exception)
+        self.assertTrue(any("No observations" in i.value for i in app.info))
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@ from equitylens.analytics import normalized_comparison
 from equitylens.providers import validate_history
 
 
-def price_figure(frame: pd.DataFrame, currency: str, chart_type: str = "Line") -> go.Figure:
+def price_figure(frame: pd.DataFrame, currency: str, chart_type: str = "Line", *, data_label: str = "Demo") -> go.Figure:
     frame = validate_history(frame)
     if chart_type not in ("Line", "Candlestick"):
         raise ValueError("Unknown chart type.")
@@ -16,16 +16,16 @@ def price_figure(frame: pd.DataFrame, currency: str, chart_type: str = "Line") -
     if chart_type == "Candlestick":
         trace = go.Candlestick(
             x=frame.date, open=frame.open, high=frame.high, low=frame.low, close=frame.close,
-            name=f"Demo price ({currency})", increasing_line_color="#24735C", decreasing_line_color="#B24B4B",
+            name=f"{data_label} price ({currency})", increasing_line_color="#24735C", decreasing_line_color="#B24B4B",
         )
     else:
         trace = go.Scatter(
-            x=frame.date, y=frame.close, name=f"Demo close ({currency})", mode="lines",
+            x=frame.date, y=frame.close, name=f"{data_label} close ({currency})", mode="lines",
             line={"color": "#24735C", "width": 2.5}, fill="tozeroy", fillcolor="rgba(36,115,92,0.08)",
-            hovertemplate="%{x|%d %b %Y}<br>" + currency + " %{y:,.2f}<extra>Demo close</extra>",
+            hovertemplate="%{x|%d %b %Y}<br>" + currency + " %{y:,.2f}<extra>" + data_label + " close</extra>",
         )
     fig.add_trace(trace, row=1, col=1)
-    fig.add_trace(go.Bar(x=frame.date, y=frame.volume, name="Demo volume", marker_color="#9BB9AB"), row=2, col=1)
+    fig.add_trace(go.Bar(x=frame.date, y=frame.volume, name=f"{data_label} volume", marker_color="#9BB9AB"), row=2, col=1)
     fig.update_layout(
         height=440, margin={"l": 15, "r": 15, "t": 15, "b": 10},
         showlegend=False, hovermode="x unified", xaxis_rangeslider_visible=False,
