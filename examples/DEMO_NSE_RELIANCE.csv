@@ -1,0 +1,7 @@
+date,open,high,low,close,volume,instrument,currency,is_demo,source,adjustment
+2026-01-02,100,112,98,110,1000,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted
+2026-01-05,110,115,105,108,900,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted
+2026-01-06,108,111,100,102,1200,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted
+2026-01-07,102,108,101,107,1100,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted
+2026-01-08,107,109,103,105,850,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted
+2026-01-09,105,120,104,118,1400,NSE:RELIANCE,INR,True,EquityLens invented example,Synthetic unadjusted

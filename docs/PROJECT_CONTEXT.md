@@ -1,6 +1,6 @@
 # EquityLens - important conversation context
 
-Updated 2026-10-26 (Asia/Calcutta).
+Updated 2026-10-27 (Asia/Calcutta).
 
 This is a curated handover of important project discussion, not a verbatim chat export. Unrelated coursework and personal/browser screenshots are intentionally excluded.
 
@@ -54,7 +54,7 @@ This is a curated handover of important project discussion, not a verbatim chat 
 - Automation ID: daily-equitylens-development.
 - Created and observed ACTIVE on October 26; daily at 10:00 AM in the intended IST schedule.
 - Returns to this chat, aiming for up to 10 useful commits including any existing commits for that day.
-- Existing saved prompt mentions React/FastAPI as earlier options; this document and the updated brief record the user's newer Streamlit preference and take precedence for project direction.
+- The saved prompt was updated on October 27 to explicitly use the user's Python/Streamlit direction, consult the roadmap/context, and avoid duplicate work after the daily target is already pushed. The 10:00 AM schedule and ACTIVE state were preserved.
 - The schedule is not a guarantee of execution or successful pushes; local tasks need the computer/app available and appropriate access.
 - Report genuine shortfalls and blockers. No filler, artificial splitting, backdating or forced history changes.
 - scripts/Add-DailyUpdate.ps1 only appends a manual progress entry. It is not itself a scheduler and does not commit or push.
@@ -67,6 +67,8 @@ Completed: initial project brief, private GitHub repository, expanded README/Abo
 Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
+
+October 27 update: bounded CSV import/export, source identity, calendar windows, historical horizons/drawdown, offline inspection and watchlist-navigation repairs are implemented. The current suite has 36 passing local tests. Uploads are unverified; direct provider integration is still pending. Use CSV_IMPORT_GUIDE.md and DATA_PROVIDER_REVIEW.md for the next review. Earlier 19-test descriptions below/above refer to the October 26 milestone, not the current total.
 
 Walk through docs/RUN_AND_LEARN.md with the student and explain the implemented foundation. Next implementation milestone is provider selection/integration for historical Indian prices, after verifying costs and usage rights. The student has not yet demonstrated learning these features merely because the assistant wrote them.
 

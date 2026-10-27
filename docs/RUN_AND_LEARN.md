@@ -4,7 +4,7 @@
 
 A Python/Streamlit local demo with ten Indian company identities, search, line/candlestick price charts, volume, historical-range metrics, aligned comparisons, a persistent single-user watchlist, and explicitly labelled synthetic CSV exports.
 
-All prices and volumes are invented, fixed demonstration data ending 2026-10-23. There is no real market provider, trained forecast or AI chatbot. No API key is needed for this milestone. Do not interpret these sample paths as company performance.
+Built-in prices/volumes are invented fixtures ending 2026-10-23. The app also supports local CSV imports with unverified provenance, calendar windows and historical statistics; see CSV_IMPORT_GUIDE.md. No direct market provider, trained forecast or AI chatbot is configured. No API key is needed. Do not interpret sample paths as company performance.
 
 ## First-time setup
 
@@ -45,7 +45,7 @@ Open the Local URL printed by Streamlit, usually http://127.0.0.1:8501. Stop the
 .venv\Scripts\python.exe -m pip check
 ```
 
-The initial complete suite has 19 tests. It checks numerical examples, invalid OHLCV, deterministic data, date-aligned comparisons, SQLite persistence and app interactions. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
+The current suite has 36 tests (October 27), checking OHLCV, CSV limits/provenance, export roundtrips, calculations, calendar windows, historical statistics, file inspection, SQLite and app interactions. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
 
 GitHub Actions is configured for Python 3.13 on Windows and Linux. Local Windows test success is not evidence that the remote jobs passed: inspect the Actions tab after pushing. Headless app tests do not verify actual browser layout, pan/zoom gestures, hover rendering or mobile appearance; those still need visual review.
 

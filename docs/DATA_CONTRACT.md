@@ -37,4 +37,6 @@ The validator rejects bad data. It does not silently sort, fill missing prices, 
 
 ## Real-provider acceptance checklist (future milestone)
 
+The October 27 local CSV workflow already accepts canonical OHLCV with bounded size, identity checks and explicit unverified declarations. Exports preserve source, currency, identity, adjustment and demo state. Calendar windows are inclusive; historical horizons count observation intervals. See [CSV_IMPORT_GUIDE.md](CSV_IMPORT_GUIDE.md) for the complete contract and limits.
+
 Verify exchange coverage, provider symbol mapping, current listings, license/display rights, request limits, source timestamps, refresh policy, session timezone/calendar, adjusted-price rules, errors and missing values before replacing demo mode. Never silently fall back from real data to synthetic data. No provider or paid plan is selected yet.

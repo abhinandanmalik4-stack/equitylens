@@ -27,7 +27,7 @@ Indian stocks first, with US stocks as future scope. Proposed first version: one
 Deliver a working demo, clear architecture, reproducible model evaluation, source-backed chatbot responses, and useful documentation.
 
 ### Current status
-Updated 2026-10-26: repository cloned into E:\gpt\equitylens. Python-first direction and the eight-week learning/build roadmap are documented. A local Streamlit dashboard now supports demo company search, line/candlestick charts, volume, historical comparisons, a persistent single-user watchlist and labelled CSV export. Its 19 automated tests pass. All market values remain synthetic; no real provider, forecast model or AI research integration is implemented. See [Run and learn](docs/RUN_AND_LEARN.md).
+Updated 2026-10-27: the local Streamlit dashboard supports demo charts/comparisons, a watchlist, bounded historical CSV imports, provenance-aware exports, calendar windows, historical price horizons and close-based drawdown. Its 36 local tests pass. Built-in data is synthetic; uploaded files remain unverified. No direct market provider, forecast model, AI research integration or deployment is implemented. See [Run and learn](docs/RUN_AND_LEARN.md) and [CSV import](docs/CSV_IMPORT_GUIDE.md).
 
 ### Project knowledge
 - Start with [START_HERE.md](START_HERE.md).

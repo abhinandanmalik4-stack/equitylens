@@ -97,3 +97,25 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - No real provider, forecast, research chatbot, authentication or deployment is configured.
 - Local tests are headless; browser appearance/gestures and remote CI results remain separate checks.
 - Run the guided walkthrough with the student, then compare data providers and select a licensed historical source.
+
+## 2026-10-27
+
+### Completed
+- Hardened OHLCV schema/provenance checks and rejected boolean market values and numeric dates.
+- Added bounded CSV imports with company/currency checks, source/adjustment declarations and enforced demo markers.
+- Added source-preserving exports, dataset fingerprints and spreadsheet-safe metadata.
+- Added inclusive calendar windows, historical observation-interval returns and close-based drawdown.
+- Repaired watchlist access after unmatched search and exposed removal of unavailable entries.
+- Added offline file inspection, source-aware dashboard upload mode, date controls and historical statistics.
+- Added an invented CSV example, usage guide and official-source review of historical-data access routes.
+- Prepared today's 10 logical commits including this guide/progress update.
+
+### Validation
+- 36 local tests pass, including import/export boundaries, company-scoped upload state, invalid replacements, and one-row/empty date windows.
+- Headless AppTest mocks only the file picker; browser file selection/layout remain separate checks.
+- No real market observations, model results or AI answers were fabricated; no purchase or deployment was made.
+
+### Next steps and limits
+- Review the app/import workflow with the student, then confirm the initial exchange and permissible historical source.
+- Built-in observations remain synthetic and uploaded histories unverified. No direct provider, forecasts or cited research chatbot are connected.
+- Remote CI outcomes require separate verification.

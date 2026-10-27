@@ -1,6 +1,6 @@
 # EquityLens — AI Stock Research Assistant
 
-EquityLens is a Python-first stock research project. Its first local milestone is a working Streamlit dashboard with explicitly synthetic prices; real market data, evaluated forecasts and cited company Q&A are upcoming milestones.
+EquityLens is a Python-first stock research project. Its local dashboard supports synthetic demo prices and user-supplied historical CSV files labelled unverified. Direct market-provider integration, evaluated forecasts and cited company Q&A are upcoming milestones.
 
 ## Run the local demo
 
@@ -21,8 +21,10 @@ The environment is already set up on the current development machine. Open the L
 - Compare synthetic paths on matching dates with a common starting value of 100.
 - Save a local single-user SQLite watchlist across restarts.
 - Inspect/download labelled synthetic observations with source metadata.
+- Import bounded single-company OHLCV CSVs with explicit source and adjustment declarations.
+- Choose inclusive calendar windows, view historical return horizons and close-based drawdown, and inspect files offline.
 
-**Every price and volume is invented demo data**, fixed through October 23, 2026. It does not represent actual company performance or current market prices. Research and forecast panels explain future work; they do not generate answers or predictions.
+**Built-in demo prices and volumes are invented**, fixed through October 23, 2026. Uploads stay unverified and never silently fall back to demo prices. The included example file is also invented. [CSV workflow and limitations](docs/CSV_IMPORT_GUIDE.md). Research and forecast panels do not generate answers or predictions yet.
 
 ## Planned features
 
@@ -44,9 +46,9 @@ Data availability, refresh frequency, and display rights will depend on the sele
 
 ## Project status
 
-**October 26, 2026: local demo foundation implemented.** Real data-provider integration, trained/evaluated models, document retrieval, AI chat, authentication and deployment are not implemented. The remaining planned features are the intended direction, not claims about available functionality.
+**October 27, 2026: local dashboard and CSV workflow implemented.** Direct real-data-provider integration, trained/evaluated models, document retrieval, AI chat, authentication and deployment are not implemented. Remaining planned features describe the intended direction, not available functionality.
 
-Validation: 19 local automated tests pass for catalogue, data checks, calculations, figures, watchlist persistence and Streamlit interactions. Remote Windows/Linux checks are configured in GitHub Actions; their actual result must be checked after the push. Browser layout and gestures have not been visually verified.
+Validation, updated October 27: 36 local automated tests pass for catalogue, data checks, CSV boundaries, exports, calendar windows, historical statistics, offline inspection, figures, watchlist persistence and Streamlit interactions. Remote Windows/Linux checks must be checked separately; browser layout and gestures are not visually verified.
 
 EquityLens is being developed as a final-year computer science engineering project to build practical skills in full-stack development, data engineering, machine learning, and AI applications. The intended outcome is a working demo with clear architecture, reproducible evaluation, baseline comparisons, and useful documentation.
 
@@ -56,6 +58,8 @@ EquityLens is being developed as a final-year computer science engineering proje
 - [Run and learn](docs/RUN_AND_LEARN.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Data contract and demo provenance](docs/DATA_CONTRACT.md)
+- [CSV import guide](docs/CSV_IMPORT_GUIDE.md)
+- [Data-provider review](docs/DATA_PROVIDER_REVIEW.md)
 - [Visual eight-week roadmap](docs/assets/equitylens-eight-week-roadmap.png)
 - [Detailed weekly learning and build plan](docs/WEEKLY_ROADMAP.md)
 - [Important conversation context](docs/PROJECT_CONTEXT.md)

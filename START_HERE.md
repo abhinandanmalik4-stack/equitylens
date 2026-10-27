@@ -13,9 +13,9 @@ Your Python-first AI Stock Research Assistant. Indian stocks first, future US su
 
 ## Current position
 
-Repository cloned into E:\gpt\equitylens. Planning saved. A local Streamlit demo dashboard is implemented and its 19 automated tests pass. All prices and volumes remain synthetic; real data, forecasting and AI research are future milestones.
+Repository cloned into E:\gpt\equitylens. The Streamlit dashboard and bounded CSV import/export now have 36 passing local tests. Built-in prices are synthetic; user-supplied files remain unverified. Direct provider integration, forecasting and AI research are future milestones.
 
-Start with [Run and learn](docs/RUN_AND_LEARN.md) for launch instructions and a guided walkthrough, then review [Architecture](docs/ARCHITECTURE.md). Next data task: select a real historical-data provider.
+Start with [Run and learn](docs/RUN_AND_LEARN.md), then try [CSV import](docs/CSV_IMPORT_GUIDE.md) and review [Architecture](docs/ARCHITECTURE.md). Next: select a permitted historical-data source using [the provider review](docs/DATA_PROVIDER_REVIEW.md).
 
 ## Learning order
 
