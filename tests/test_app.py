@@ -53,6 +53,16 @@ class AppTests(unittest.TestCase):
         self.assertFalse(fresh.exception)
         self.assertEqual(Watchlist(self.db).items(), [])
 
+    def test_saved_company_remains_accessible_after_search_miss(self):
+        Watchlist(self.db).add("NSE:TCS")
+        app = self.start()
+        app.text_input(key="search_query").set_value("no-such-company").run()
+        self.assertFalse(app.exception)
+        self.assertTrue(app.button(key="watchlist_action").disabled)
+        app.button(key="open:NSE:TCS").click().run()
+        self.assertFalse(app.exception)
+        self.assertIn("Tata Consultancy Services", [t.value for t in app.title])
+
     def test_ranges_chart_type_and_comparison(self):
         app = self.start()
         app.segmented_control(key="period").set_value("1M").run()

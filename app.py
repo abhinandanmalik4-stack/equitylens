@@ -35,27 +35,29 @@ with st.sidebar:
     st.subheader("Explore Indian stocks")
     query = st.text_input("Search company, symbol or sector", key="search_query", placeholder="Try Infosys or banking")
     matches = search_instruments(query)
+    selected = None
     if not matches:
         st.info("No matching companies. Try another name, symbol or sector.")
-        st.stop()
-    options = [i.key for i in matches]
-    if st.session_state.instrument not in options:
-        st.session_state.instrument = options[0]
-    selected = st.selectbox(
-        "Company", options, key="instrument",
-        format_func=lambda key: f"{get_instrument(key).name} ({get_instrument(key).symbol})",
-    )
-    instrument = get_instrument(selected)
-    st.caption(f"{instrument.exchange} demo universe · {instrument.currency} · {instrument.sector}")
+    else:
+        options = [i.key for i in matches]
+        if st.session_state.instrument not in options:
+            st.session_state.instrument = options[0]
+        selected = st.selectbox(
+            "Company", options, key="instrument",
+            format_func=lambda key: f"{get_instrument(key).name} ({get_instrument(key).symbol})",
+        )
+        instrument = get_instrument(selected)
+        st.caption(f"{instrument.exchange} demo universe · {instrument.currency} · {instrument.sector}")
     store = None
     saved = []
     try:
         store = Watchlist(os.environ.get("EQUITYLENS_DB_PATH", str(ROOT / "data" / "watchlist.db")))
         saved = store.items()
     except (OSError, sqlite3.Error):
+        store = None
         st.warning("Watchlist storage is unavailable. Charts still work; check folder permissions.")
     label = "Remove from watchlist" if selected in saved else "Save to watchlist"
-    if st.button(label, key="watchlist_action", disabled=store is None, width="stretch"):
+    if st.button(label, key="watchlist_action", disabled=store is None or selected is None, width="stretch"):
         try:
             if selected in saved:
                 store.remove(selected)
@@ -72,9 +74,19 @@ with st.sidebar:
         try:
             item = get_instrument(key)
         except ValueError:
+            st.caption(f"Unavailable catalogue entry: {key}")
+            if st.button("Remove unavailable entry", key=f"remove_stale:{key}", disabled=store is None):
+                try:
+                    store.remove(key)
+                    st.rerun()
+                except (OSError, sqlite3.Error):
+                    st.warning("Could not remove that entry. Check storage access.")
             continue
         st.button(item.name, key=f"open:{key}", on_click=choose_saved, args=(key,), width="stretch")
     st.caption("Stored on this computer. This is a single-user demo, not a portfolio account.")
+
+if selected is None:
+    st.stop()
 
 st.caption("RESEARCH WORKSPACE / INDIA")
 st.title(instrument.name)
