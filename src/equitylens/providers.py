@@ -17,7 +17,11 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
     """Reject ambiguous/bad data rather than silently inventing replacements."""
     if frame.empty or not set(OHLCV).issubset(frame.columns):
         raise ValueError("History must contain dated OHLCV rows.")
+    if not frame.columns.is_unique:
+        raise ValueError("History column names must be unique.")
     data = frame.loc[:, list(OHLCV)].copy()
+    if pd.api.types.is_numeric_dtype(data["date"]) or data["date"].map(lambda v: isinstance(v, (int, float, bool))).any():
+        raise ValueError("Dates must be explicit daily dates, not numbers or booleans.")
     data["date"] = pd.to_datetime(data["date"], errors="raise")
     if data["date"].isna().any() or data["date"].dt.tz is not None:
         raise ValueError("Daily dates must be valid timezone-naive session labels.")
@@ -26,6 +30,8 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
     if data["date"].duplicated().any() or not data["date"].is_monotonic_increasing:
         raise ValueError("Daily dates must be unique and increasing.")
     for column in OHLCV[1:]:
+        if data[column].map(lambda v: isinstance(v, (bool, np.bool_))).any():
+            raise ValueError(f"{column} must contain numbers, not booleans.")
         data[column] = pd.to_numeric(data[column], errors="raise")
     values = data[list(OHLCV[1:])].to_numpy(dtype=float)
     if not np.isfinite(values).all():
@@ -51,6 +57,10 @@ class PriceHistory:
     adjustment: str
 
     def __post_init__(self):
+        if not isinstance(self.is_demo, bool):
+            raise ValueError("The demo flag must be an explicit boolean.")
+        if not self.source.strip() or not self.adjustment.strip():
+            raise ValueError("Source and price adjustment policy are required.")
         self.frame = validate_history(self.frame)
         if self.frame["date"].iloc[-1].date() != self.as_of:
             raise ValueError("As-of date must match the last available session.")

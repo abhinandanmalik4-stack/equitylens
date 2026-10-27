@@ -33,6 +33,17 @@ class ProviderTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_history(bad)
 
+    def test_reject_ambiguous_schema_and_boolean_prices(self):
+        frame = DemoProvider().history(INSTRUMENTS[0]).frame
+        duplicate = pd.concat([frame, frame[["close"]]], axis=1)
+        numeric_dates = frame.assign(date=range(len(frame)))
+        boolean_prices = frame.assign(close=True)
+        boolean_volume = frame.assign(volume=False)
+        for bad in (duplicate, numeric_dates, boolean_prices, boolean_volume):
+            with self.subTest(columns=list(bad.columns)):
+                with self.assertRaises(ValueError):
+                    validate_history(bad)
+
 
 if __name__ == "__main__":
     unittest.main()
