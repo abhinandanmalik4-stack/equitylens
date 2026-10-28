@@ -15,6 +15,8 @@ OHLCV = ("date", "open", "high", "low", "close", "volume")
 
 def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
     """Reject ambiguous/bad data rather than silently inventing replacements."""
+    if not isinstance(frame, pd.DataFrame):
+        raise ValueError("History must be a pandas DataFrame.")
     if frame.empty or not set(OHLCV).issubset(frame.columns):
         raise ValueError("History must contain dated OHLCV rows.")
     if not frame.columns.is_unique:
@@ -57,9 +59,11 @@ class PriceHistory:
     adjustment: str
 
     def __post_init__(self):
+        if not isinstance(self.instrument, Instrument):
+            raise ValueError("History must identify an Instrument.")
         if not isinstance(self.is_demo, bool):
             raise ValueError("The demo flag must be an explicit boolean.")
-        if not self.source.strip() or not self.adjustment.strip():
+        if any(not isinstance(value, str) or not value.strip() for value in (self.source, self.adjustment)):
             raise ValueError("Source and price adjustment policy are required.")
         self.frame = validate_history(self.frame)
         if self.frame["date"].iloc[-1].date() != self.as_of:

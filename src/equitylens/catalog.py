@@ -1,6 +1,7 @@
 """Instrument identity is independent of the data provider and UI."""
 
 from dataclasses import dataclass
+import re
 
 
 @dataclass(frozen=True)
@@ -11,6 +12,16 @@ class Instrument:
     exchange: str = "NSE"
     currency: str = "INR"
     country: str = "IN"
+
+    def __post_init__(self):
+        for label in ("symbol", "name", "sector", "exchange", "currency", "country"):
+            value = getattr(self, label)
+            if not isinstance(value, str) or not value.strip() or value != value.strip() or any(ord(c) < 32 for c in value):
+                raise ValueError(f"Instrument {label} must be nonempty text without surrounding whitespace or control characters.")
+        if not re.fullmatch(r"[A-Z]{3}", self.currency) or not re.fullmatch(r"[A-Z]{2}", self.country):
+            raise ValueError("Use uppercase three-letter currency and two-letter country codes.")
+        if ":" in self.symbol or ":" in self.exchange:
+            raise ValueError("Instrument symbol and exchange cannot contain the identity separator ':'.")
 
     @property
     def key(self) -> str:
