@@ -28,6 +28,8 @@ The validator rejects bad data. It does not silently sort, fill missing prices, 
 
 ## Calculations
 
+October 28 boundary handling: positive finite input values can still produce an unrepresentable percentage. Such returns are unavailable, never displayed as infinity or replaced with zero. Normalized comparisons divide before scaling to avoid premature overflow; genuinely nonfinite normalized paths are rejected. Instrument metadata requires nonempty trimmed text without control characters, uppercase currency/country codes and no colon within the exchange/symbol components. Malformed provider records raise controlled validation errors.
+
 - Previous close is the previous observation in the full series, not the beginning of the selected range.
 - Change = latest close - previous close.
 - Change percent = 100 * change / previous close.

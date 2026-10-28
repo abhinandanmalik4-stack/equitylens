@@ -45,7 +45,7 @@ Open the Local URL printed by Streamlit, usually http://127.0.0.1:8501. Stop the
 .venv\Scripts\python.exe -m pip check
 ```
 
-The current suite has 36 tests (October 27), checking OHLCV, CSV limits/provenance, export roundtrips, calculations, calendar windows, historical statistics, file inspection, SQLite and app interactions. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
+The current suite has 41 tests (October 28), checking OHLCV, instrument/history contracts, numeric limits, CSV limits/provenance, export roundtrips, calculations, calendar windows, historical statistics, file inspection, SQLite and app interactions. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
 
 GitHub Actions is configured for Python 3.13 on Windows and Linux. Local Windows test success is not evidence that the remote jobs passed: inspect the Actions tab after pushing. Headless app tests do not verify actual browser layout, pan/zoom gestures, hover rendering or mobile appearance; those still need visual review.
 

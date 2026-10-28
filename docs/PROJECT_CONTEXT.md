@@ -1,6 +1,6 @@
 # EquityLens - important conversation context
 
-Updated 2026-10-27 (Asia/Calcutta).
+Updated 2026-10-28 (Asia/Calcutta).
 
 This is a curated handover of important project discussion, not a verbatim chat export. Unrelated coursework and personal/browser screenshots are intentionally excluded.
 
@@ -67,6 +67,8 @@ Completed: initial project brief, private GitHub repository, expanded README/Abo
 Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
+
+October 28 maintenance update: finite arithmetic and instrument/history-metadata boundary handling were hardened. The full local suite now has 41 passing tests, with pip compatibility checks passing. This focused maintenance run contains three commits including the progress documentation; the ten-commit aspiration was not padded with filler. The next major milestone remains student walkthrough and exchange/data-source selection; do not leap ahead to unrequested paid integration or pretend that walkthrough happened.
 
 October 27 update: bounded CSV import/export, source identity, calendar windows, historical horizons/drawdown, offline inspection and watchlist-navigation repairs are implemented. The current suite has 36 passing local tests. Uploads are unverified; direct provider integration is still pending. Use CSV_IMPORT_GUIDE.md and DATA_PROVIDER_REVIEW.md for the next review. Earlier 19-test descriptions below/above refer to the October 26 milestone, not the current total.
 

@@ -35,6 +35,8 @@ Top metrics use the latest row of the full dataset. Chart, range return and wors
 
 Uploaded files are never compared with synthetic peers. Exports verify rows belong to the labelled history and escape formula-like metadata for spreadsheet opening. Dataset SHA-256 proves identity of data and declarations, not source ownership or market accuracy.
 
+October 28 update: finite prices can still produce a percentage too large for numeric representation. The dashboard marks that return unavailable; it does not fabricate a zero or display infinity as performance.
+
 ## Inspect a file without the interface
 
 ```powershell

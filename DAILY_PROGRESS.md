@@ -119,3 +119,21 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Review the app/import workflow with the student, then confirm the initial exchange and permissible historical source.
 - Built-in observations remain synthetic and uploaded histories unverified. No direct provider, forecasts or cited research chatbot are connected.
 - Remote CI outcomes require separate verification.
+
+## 2026-10-28
+
+### Completed
+- Reviewed the existing private repository, current implementation and pending learning/data-source decisions.
+- Fixed numeric boundary handling: valid finite prices no longer produce infinite displayed returns, and large unchanged prices normalize correctly.
+- Hardened instrument identity and provider metadata validation, rejecting malformed records with controlled errors.
+- Added regression checks for numeric overflow, identity separators/control characters, invalid currency/country codes and missing/mistyped provenance.
+- Recorded the focused maintenance batch in three logical commits including this documentation update. The daily aspiration of ten was not filled with artificial changes; next major implementation remains gated on the student review and provider choice.
+
+### Validation
+- All 41 local automated tests passed; pip check reported no dependency conflicts.
+- Remote status lookup returned no status entries and does not establish a successful CI run. Rendered-browser behavior remains unverified.
+
+### Next steps
+- Review the running demo/CSV workflow together and explain the data path.
+- Confirm an initial Indian exchange and permitted historical-data source using docs/DATA_PROVIDER_REVIEW.md.
+- No real provider, model, chatbot, paid account or deployment was introduced.
