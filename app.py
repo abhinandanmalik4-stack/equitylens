@@ -186,7 +186,10 @@ with main:
         st.caption("Demo dates are weekdays, not an exchange holiday calendar. No dividends or corporate actions are modelled.")
     st.subheader("Historical comparison")
     if metrics.range_return_pct is None:
-        st.caption("Range price change is unavailable with only one observation.")
+        if len(visible) < 2:
+            st.caption("Range price change is unavailable with only one observation.")
+        else:
+            st.caption("Range price change is unavailable because the result exceeds finite numeric limits.")
     else:
         st.markdown(f"Selected-range price change: **{metrics.range_return_pct:+.2f}%** ({label.lower()} data).")
     drawdown = max_drawdown_pct(visible)

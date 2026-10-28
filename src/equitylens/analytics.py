@@ -3,7 +3,9 @@
 from dataclasses import dataclass
 
 import pandas as pd
+import numpy as np
 
+from equitylens.numbers import price_change_pct
 from equitylens.providers import validate_history
 
 RANGES = {"1M": 21, "3M": 63, "6M": 126, "1Y": 252, "All": None}
@@ -36,9 +38,9 @@ def summarize(full_history: pd.DataFrame, visible: pd.DataFrame) -> Summary:
     first, last = float(visible.close.iloc[0]), float(visible.close.iloc[-1])
     return Summary(
         latest, previous, change,
-        100 * change / previous if previous is not None else None,
+        price_change_pct(latest, previous) if previous is not None else None,
         int(full.volume.iloc[-1]),
-        100 * (last / first - 1) if len(visible) > 1 else None,
+        price_change_pct(last, first) if len(visible) > 1 else None,
     )
 
 
@@ -49,7 +51,10 @@ def normalized_comparison(a: pd.DataFrame, b: pd.DataFrame) -> pd.DataFrame:
     if len(common) < 2:
         raise ValueError("Comparison needs at least two common dates.")
     for column in ("close_a", "close_b"):
-        common[column] = 100 * common[column] / common[column].iloc[0]
+        with np.errstate(over="ignore", invalid="ignore", divide="ignore"):
+            common[column] = (common[column] / common[column].iloc[0]) * 100
+        if not np.isfinite(common[column]).all():
+            raise ValueError("Comparison cannot be represented as finite normalized prices.")
     return common
 
 

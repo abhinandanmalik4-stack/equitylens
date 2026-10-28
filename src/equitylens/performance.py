@@ -2,6 +2,7 @@
 
 import pandas as pd
 
+from equitylens.numbers import price_change_pct
 from equitylens.providers import validate_history
 
 HORIZONS = {"Previous observation": 1, "5 intervals": 5, "21 intervals": 21, "63 intervals": 63, "126 intervals": 126}
@@ -17,7 +18,7 @@ def historical_returns(frame: pd.DataFrame) -> pd.DataFrame:
             "Period": label,
             "Start date": frame.date.iloc[-intervals - 1].date() if available else None,
             "End date": frame.date.iloc[-1].date(),
-            "Price change (%)": 100 * (float(close.iloc[-1]) / float(close.iloc[-intervals - 1]) - 1) if available else None,
+            "Price change (%)": price_change_pct(close.iloc[-1], close.iloc[-intervals - 1]) if available else None,
         })
     return pd.DataFrame(rows)
 
