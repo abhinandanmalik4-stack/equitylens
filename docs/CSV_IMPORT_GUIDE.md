@@ -39,6 +39,8 @@ October 28 update: finite prices can still produce a percentage too large for nu
 
 ## Inspect a file without the interface
 
+For Python callers, `import_history` expects file bytes, an `Instrument`, nonempty source/adjustment strings of at most 200 characters, and an explicit boolean `is_demo`. Invalid argument types raise `ValueError` before parsing; strings such as `"False"` are not boolean flags. This prevents accidental truthiness from changing a file's demo declaration. The CSV column itself still accepts the documented True/False text markers.
+
 ```powershell
 .venv\Scripts\python.exe -m equitylens.inspect_data examples/DEMO_NSE_RELIANCE.csv --instrument NSE:RELIANCE --source "EquityLens invented example" --adjustment "Synthetic unadjusted" --demo
 ```

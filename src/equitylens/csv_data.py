@@ -17,9 +17,15 @@ METADATA = {"instrument", "currency", "source", "is_demo", "adjustment"}
 
 
 def import_history(raw: bytes, instrument: Instrument, source: str, adjustment: str, *, is_demo: bool = True) -> PriceHistory:
+    if not isinstance(raw, bytes):
+        raise ValueError("CSV input must be bytes read from a file.")
+    if not isinstance(instrument, Instrument):
+        raise ValueError("Select a valid Instrument before importing history.")
+    if not isinstance(is_demo, bool):
+        raise ValueError("The demo flag must be an explicit boolean.")
     if not raw or len(raw) > MAX_BYTES:
         raise ValueError("Provide a nonempty CSV no larger than 2 MiB.")
-    if not source.strip() or not adjustment.strip() or max(len(source), len(adjustment)) > 200:
+    if any(not isinstance(value, str) or not value.strip() or len(value) > 200 for value in (source, adjustment)):
         raise ValueError("Source and adjustment policy must each contain 1-200 characters.")
     try:
         text = raw.decode("utf-8-sig")

@@ -137,3 +137,16 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Review the running demo/CSV workflow together and explain the data path.
 - Confirm an initial Indian exchange and permitted historical-data source using docs/DATA_PROVIDER_REVIEW.md.
 - No real provider, model, chatbot, paid account or deployment was introduced.
+
+## 2026-10-29
+
+### Completed
+- Fetched the existing private repository; main was clean and no current-day commits were present before this work.
+- Hardened CSV import arguments: incorrect file, instrument, provenance and demo-flag types now produce controlled validation errors before parsing.
+- Added regression checks for the observation limit and inconsistent/unknown demo markers; documented the Python import contract.
+- Kept the fix, related tests and documentation in one coherent commit. Today's count is one, nine below the aspiration of ten; no filler was created.
+
+### Validation and next steps
+- All 44 local automated tests passed with temporary-file access; the restricted test attempt stalled and was stopped. Dependency checking found no broken requirements; whitespace checks passed.
+- Remote CI and rendered-browser interaction remain unverified.
+- Next: walk through the demo/CSV workflow with the student, then confirm an Indian exchange and permitted historical source. No provider, model, chatbot or deployment was added today.

@@ -48,7 +48,7 @@ Data availability, refresh frequency, and display rights will depend on the sele
 
 **October 27, 2026: local dashboard and CSV workflow implemented.** Direct real-data-provider integration, trained/evaluated models, document retrieval, AI chat, authentication and deployment are not implemented. Remaining planned features describe the intended direction, not available functionality.
 
-Validation, updated October 28: 41 local automated tests pass for catalogue, data contracts, numeric boundaries, CSV import/export, calendar windows, historical statistics, offline inspection, figures, watchlist persistence and Streamlit interactions. Nonrepresentable returns are explicitly unavailable, not infinite scores. Remote Windows/Linux checks must be checked separately; browser layout and gestures are not visually verified.
+Validation, updated October 29: 44 local automated tests pass for catalogue, data contracts, numeric boundaries, CSV import/export, calendar windows, historical statistics, offline inspection, figures, watchlist persistence and Streamlit interactions. CSV argument types, observation limits and invalid demo markers have explicit regression checks. Nonrepresentable returns are explicitly unavailable, not infinite scores. Remote Windows/Linux checks must be checked separately; browser layout and gestures are not visually verified.
 
 EquityLens is being developed as a final-year computer science engineering project to build practical skills in full-stack development, data engineering, machine learning, and AI applications. The intended outcome is a working demo with clear architecture, reproducible evaluation, baseline comparisons, and useful documentation.
 
