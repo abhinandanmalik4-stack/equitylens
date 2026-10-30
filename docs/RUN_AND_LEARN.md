@@ -38,6 +38,10 @@ Open the Local URL printed by Streamlit, usually http://127.0.0.1:8501. Stop the
 6. Show the underlying observations and download a demo CSV; its columns include source, currency and `is_demo=True`.
 7. Notice that research and forecasting panels explicitly describe future milestones instead of fabricating answers.
 
+## Practise with worked answers
+
+Use [Foundation practice](FOUNDATION_PRACTICE.md) for a 20-30 minute exercise on the six-row invented CSV: calculate returns and drawdown yourself, check the dashboard, and explain a rejected row. The worksheet includes a checked answer key; it does not mean the student has completed the walkthrough.
+
 ## Run checks
 
 ```powershell

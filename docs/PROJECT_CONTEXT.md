@@ -1,6 +1,6 @@
 # EquityLens - important conversation context
 
-Updated 2026-10-29 (Asia/Calcutta).
+Updated 2026-10-30 (Asia/Calcutta).
 
 This is a curated handover of important project discussion, not a verbatim chat export. Unrelated coursework and personal/browser screenshots are intentionally excluded.
 
@@ -67,6 +67,8 @@ Completed: initial project brief, private GitHub repository, expanded README/Abo
 Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
+
+October 30 learning update: docs/FOUNDATION_PRACTICE.md now provides a short exercise and checked answers using only the existing invented six-row CSV, including previous-close/window returns, observation intervals, drawdown, an empty window and a rejected high. Calculations and the offline inspection report were executed against current code. This prepares the student review; it does not claim the student completed it. The latest full automated suite result remains 44 passes from October 29; application behavior was not changed today.
 
 October 29 maintenance update: CSV import rejects incorrect argument types with controlled validation errors before reading observations. Added regression checks for the 10,000-row limit and inconsistent/unknown demo markers. All 44 local tests pass, as does the dependency check. One coherent commit records the fix, checks and documentation; no quota commits were added. The student walkthrough and provider selection below remain pending.
 

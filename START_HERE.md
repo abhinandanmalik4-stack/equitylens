@@ -15,7 +15,7 @@ Your Python-first AI Stock Research Assistant. Indian stocks first, future US su
 
 Repository cloned into E:\gpt\equitylens. The Streamlit dashboard and bounded CSV import/export now have 41 passing local tests (October 28), including numeric-limit and metadata-contract regressions. Built-in prices are synthetic; user-supplied files remain unverified. Direct provider integration, forecasting and AI research are future milestones.
 
-Start with [Run and learn](docs/RUN_AND_LEARN.md), then try [CSV import](docs/CSV_IMPORT_GUIDE.md) and review [Architecture](docs/ARCHITECTURE.md). Next: select a permitted historical-data source using [the provider review](docs/DATA_PROVIDER_REVIEW.md).
+Start with [Run and learn](docs/RUN_AND_LEARN.md) and [the worked foundation practice](docs/FOUNDATION_PRACTICE.md), then try [CSV import](docs/CSV_IMPORT_GUIDE.md) and review [Architecture](docs/ARCHITECTURE.md). Next: select a permitted historical-data source using [the provider review](docs/DATA_PROVIDER_REVIEW.md).
 
 ## Learning order
 

@@ -150,3 +150,16 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - All 44 local automated tests passed with temporary-file access; the restricted test attempt stalled and was stopped. Dependency checking found no broken requirements; whitespace checks passed.
 - Remote CI and rendered-browser interaction remain unverified.
 - Next: walk through the demo/CSV workflow with the student, then confirm an Indian exchange and permitted historical source. No provider, model, chatbot or deployment was added today.
+
+## 2026-10-30
+
+### Completed
+- Fetched the existing private repository and confirmed a clean main branch with no current-day commits before this work.
+- Prepared a 20-30 minute foundation worksheet with worked answers based only on the existing six-row invented CSV, preserving the student's guided-learning pace.
+- Included calculations, calendar-window behavior, provenance interpretation, a controlled invalid-row experiment and an explain-it-back checkpoint; linked it from the start and run guides.
+- Kept the worksheet, links and handover in one meaningful commit: one of the aspirational ten, with nine not filled by artificial changes.
+
+### Validation and next steps
+- Executed calculations against current modules and the offline inspector on the invented example; verified the worksheet's row count, dates, previous/full/window changes, drawdowns and empty-window behavior. Documentation links and whitespace were checked.
+- No application code changed; the full-suite result remains 44 passing tests on October 29, not a claim of a new full test run today. Browser behavior and remote CI remain unverified.
+- The student walkthrough and exchange/permitted-source choice are still pending. No real prices, model results, chatbot, purchase or deployment were introduced.
