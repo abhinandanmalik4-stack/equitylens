@@ -1,6 +1,6 @@
 # EquityLens - important conversation context
 
-Updated 2026-10-30 (Asia/Calcutta).
+Updated 2026-11-02 (Asia/Calcutta).
 
 This is a curated handover of important project discussion, not a verbatim chat export. Unrelated coursework and personal/browser screenshots are intentionally excluded.
 
@@ -10,6 +10,7 @@ This is a curated handover of important project discussion, not a verbatim chat 
 - Wants to learn while building, with simple explanations and guided implementation.
 - Understand, implement, verify, then record a useful commit. Do not replace learning with unexplained large code drops.
 - User asked to keep the detailed weekly plan and important project context in the project folder.
+- On November 1 the user clarified that they know basic Python and want small code explanations and practice so they can explain the implementation in interviews. Avoid overwhelming them with a complete architecture lecture; start with imports, calls and return values in docs/PYTHON_FIRST_LESSON.md.
 
 ## Repository and workspace
 
@@ -67,6 +68,8 @@ Completed: initial project brief, private GitHub repository, expanded README/Abo
 Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
+
+November 2 update: the user reported an import error in a running Streamlit instance. The project's own .venv successfully imported equitylens, making a different launch environment a likely cause; the failed process was not inspected. Added run_equitylens.py with environment checks and explicit local launch, VS Code tasks, a troubleshooting guide and the first beginner lesson. All 50 local tests passed, the actual environment check passed and pip check found no conflicts. Live use of the new VS Code task remains unverified. Three useful commits were prepared for the user's requested batch of ten; no filler was added. The user has opened app.py and shown a working dashboard in screenshots, but has not yet demonstrated understanding or confirmed the suggested widget exercises.
 
 October 30 learning update: docs/FOUNDATION_PRACTICE.md now provides a short exercise and checked answers using only the existing invented six-row CSV, including previous-close/window returns, observation intervals, drawdown, an empty window and a rejected high. Calculations and the offline inspection report were executed against current code. This prepares the student review; it does not claim the student completed it. The latest full automated suite result remains 44 passes from October 29; application behavior was not changed today.
 

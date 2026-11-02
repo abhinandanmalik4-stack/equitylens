@@ -163,3 +163,18 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Executed calculations against current modules and the offline inspector on the invented example; verified the worksheet's row count, dates, previous/full/window changes, drawdowns and empty-window behavior. Documentation links and whitespace were checked.
 - No application code changed; the full-suite result remains 44 passing tests on October 29, not a claim of a new full test run today. Browser behavior and remote CI remain unverified.
 - The student walkthrough and exchange/permitted-source choice are still pending. No real prices, model results, chatbot, purchase or deployment were introduced.
+
+## 2026-11-02
+
+### Completed
+- Reviewed the existing private repository and current learning requests; main was clean and no current-day commits were present after fetching.
+- Investigated the reported missing-equitylens import: the local .venv can import the project. A different launch environment is a likely cause, not a confirmed inspection of the failed process.
+- Added a launcher that explicitly chooses the checkout's environment, checks package origin/dependencies, pins the working directory and local address, supports check-only mode, and reports missing setup without automatically installing anything.
+- Added VS Code run/check tasks and workspace interpreter defaults with setup instructions.
+- Saved a first beginner lesson on imports, function calls, return values and environment paths, tied to the actual search code and reported error; linked it from the start/run guides.
+- Recorded the work as three coherent commits, seven below the requested ten. Did not add empty or artificial commits. The local chat transcript and unrelated coursework were excluded.
+
+### Validation and next steps
+- All 50 local automated tests passed; pip check reported no broken requirements. The actual launcher check, beginner search command, VS Code JSON/Windows paths and documentation links were checked. No new live server was started during validation.
+- New VS Code task interaction and remote CI outcomes remain unverified. User screenshots already show an earlier dashboard rendering; broader browser interactions are still a separate check.
+- Next: try the named run task and work through the small import/search lesson together. Provider choice, real data, evaluated forecasts and cited research remain future milestones.

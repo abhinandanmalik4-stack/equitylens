@@ -14,6 +14,8 @@ python -m venv .venv
 
 The environment is already set up on the current development machine. Open the Local URL printed by Streamlit. [Setup, checks and guided walkthrough](docs/RUN_AND_LEARN.md).
 
+For a checked launch, run `.\.venv\Scripts\python.exe run_equitylens.py` from this folder, or use [the VS Code run task](docs/VSCODE_SETUP.md). Add `--check` to verify the environment without starting a server. The launcher pins the local environment; it does not install dependencies automatically. [Beginner explanation of imports and environments](docs/PYTHON_FIRST_LESSON.md).
+
 ## Available in milestone 1
 
 - Search a ten-company Indian demo catalogue.
@@ -48,7 +50,7 @@ Data availability, refresh frequency, and display rights will depend on the sele
 
 **October 27, 2026: local dashboard and CSV workflow implemented.** Direct real-data-provider integration, trained/evaluated models, document retrieval, AI chat, authentication and deployment are not implemented. Remaining planned features describe the intended direction, not available functionality.
 
-Validation, updated October 29: 44 local automated tests pass for catalogue, data contracts, numeric boundaries, CSV import/export, calendar windows, historical statistics, offline inspection, figures, watchlist persistence and Streamlit interactions. CSV argument types, observation limits and invalid demo markers have explicit regression checks. Nonrepresentable returns are explicitly unavailable, not infinite scores. Remote Windows/Linux checks must be checked separately; browser layout and gestures are not visually verified.
+Validation, updated November 2: 50 local automated tests pass for catalogue, data contracts, numeric boundaries, CSV import/export, calendar windows, historical statistics, offline inspection, figures, watchlist persistence, Streamlit interactions and the checked launcher. CSV argument types, observation limits and invalid demo markers have explicit regression checks. Nonrepresentable returns are explicitly unavailable, not infinite scores. Remote Windows/Linux checks must be checked separately. User screenshots show the dashboard rendering; comprehensive browser interactions and the new VS Code tasks have not been manually verified.
 
 EquityLens is being developed as a final-year computer science engineering project to build practical skills in full-stack development, data engineering, machine learning, and AI applications. The intended outcome is a working demo with clear architecture, reproducible evaluation, baseline comparisons, and useful documentation.
 

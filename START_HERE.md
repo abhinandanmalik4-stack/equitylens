@@ -19,6 +19,8 @@ Start with [Run and learn](docs/RUN_AND_LEARN.md) and [the worked foundation pra
 
 ## Learning order
 
+Only know basic Python? Begin with [imports, function calls and your environment](docs/PYTHON_FIRST_LESSON.md). Open/run the project using [the VS Code guide](docs/VSCODE_SETUP.md).
+
 Python and Git -> Streamlit -> pandas and APIs -> Plotly and SQLite -> chronological ML evaluation -> retrieval and cited AI answers -> testing and deployment.
 
 No handwritten HTML, CSS or JavaScript is needed for the first version. A separate FastAPI service is optional later.

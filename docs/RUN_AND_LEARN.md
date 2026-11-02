@@ -22,11 +22,29 @@ The environment is already installed on the current machine. On a new machine, i
 
 ## Start the app
 
+In VS Code, use [the project run tasks](VSCODE_SETUP.md). They explicitly choose this checkout's Python. To check the environment without starting a web server:
+
+```powershell
+.\.venv\Scripts\python.exe run_equitylens.py --check
+```
+
+To launch with the same checks, run `.\.venv\Scripts\python.exe run_equitylens.py`. The direct Streamlit command below is also supported.
+
 ```powershell
 .venv\Scripts\python.exe -m streamlit run app.py --server.address 127.0.0.1
 ```
 
 Open the Local URL printed by Streamlit, usually http://127.0.0.1:8501. Stop the server with Ctrl+C. Run from the project root so the checked-in theme config is loaded. This is a local preview, not an internet deployment.
+
+### If Python cannot find equitylens
+
+Stop the failing server and use the explicit `.venv` command above. Our package lives in `src/equitylens`; it is registered with the environment by the editable installation during setup. If the environment check still fails, run this from the project folder:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt -e .
+```
+
+Then retry the check. Do not install an unrelated package from the internet named equitylens or copy source files into Python's installation. [First Python lesson](PYTHON_FIRST_LESSON.md) explains the actual import and search call using beginner exercises.
 
 ## Five-minute walkthrough
 
@@ -49,7 +67,7 @@ Use [Foundation practice](FOUNDATION_PRACTICE.md) for a 20-30 minute exercise on
 .venv\Scripts\python.exe -m pip check
 ```
 
-The current suite has 41 tests (October 28), checking OHLCV, instrument/history contracts, numeric limits, CSV limits/provenance, export roundtrips, calculations, calendar windows, historical statistics, file inspection, SQLite and app interactions. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
+The current suite has 50 tests (November 2), checking OHLCV, instrument/history contracts, numeric limits, CSV limits/provenance, export roundtrips, calculations, calendar windows, historical statistics, file inspection, SQLite, app interactions and checked launch behavior. Streamlit may log a harmless missing-ScriptRunContext warning from the headless testing harness.
 
 GitHub Actions is configured for Python 3.13 on Windows and Linux. Local Windows test success is not evidence that the remote jobs passed: inspect the Actions tab after pushing. Headless app tests do not verify actual browser layout, pan/zoom gestures, hover rendering or mobile appearance; those still need visual review.
 
