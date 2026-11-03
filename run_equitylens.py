@@ -6,6 +6,23 @@ import subprocess
 import sys
 
 ROOT = Path(__file__).resolve().parent
+ENVIRONMENT_PROBE = """
+import pathlib
+import sys
+import equitylens
+
+actual = pathlib.Path(equitylens.__file__).resolve().parent
+expected = pathlib.Path(sys.argv[1]).resolve() / 'src' / 'equitylens'
+if actual != expected:
+    raise SystemExit('equitylens imports from another installation')
+
+import streamlit
+import pandas
+import numpy
+import plotly
+print('Python: ' + sys.executable)
+print('Project package: ' + str(actual))
+"""
 
 
 def environment_python(root: Path) -> Path:
@@ -25,15 +42,8 @@ def main(argv=None, *, root: Path = ROOT) -> int:
         print("The project needs app.py and a .venv environment. Follow docs/RUN_AND_LEARN.md for setup.", file=sys.stderr)
         return 2
     # Verify the local editable package rather than accepting another checkout.
-    probe = (
-        "import pathlib, sys, equitylens, streamlit, pandas, numpy, plotly; "
-        "actual = pathlib.Path(equitylens.__file__).resolve().parent; "
-        "expected = pathlib.Path(sys.argv[1]).resolve() / 'src' / 'equitylens'; "
-        "assert actual == expected, 'equitylens imports from another installation'; "
-        "print('Python: ' + sys.executable); print('Project package: ' + str(actual))"
-    )
     try:
-        result = subprocess.run([str(python), "-c", probe, str(root)], cwd=root,
+        result = subprocess.run([str(python), "-c", ENVIRONMENT_PROBE, str(root)], cwd=root,
                                 capture_output=True, text=True, timeout=30)
         if result.returncode:
             print(result.stderr.strip(), file=sys.stderr)

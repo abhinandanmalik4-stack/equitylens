@@ -178,3 +178,17 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - All 50 local automated tests passed; pip check reported no broken requirements. The actual launcher check, beginner search command, VS Code JSON/Windows paths and documentation links were checked. No new live server was started during validation.
 - New VS Code task interaction and remote CI outcomes remain unverified. User screenshots already show an earlier dashboard rendering; broader browser interactions are still a separate check.
 - Next: try the named run task and work through the small import/search lesson together. Provider choice, real data, evaluated forecasts and cited research remain future milestones.
+
+## 2026-11-03
+
+### Completed
+- Read the project state, learning context and roadmap; fetched origin and confirmed a clean main branch with no current-day commits before this work.
+- Reproduced a launcher defect: optimized Python removed the assert that rejected packages from another checkout, incorrectly allowing the check to pass.
+- Replaced the assertion with an explicit conditional failure and checked the package location before importing the dashboard dependencies.
+- Added a subprocess regression covering matching and mismatching package locations in normal, -O and -OO modes. Lightweight dependency stubs isolate this check; the actual installed environment was checked separately.
+- Kept the related fix, regression and handover in one commit: one of the ten-commit aspiration, nine short without filler. No unrelated files or local chat transcript were staged.
+
+### Validation and next steps
+- All 51 local automated tests passed; pip check found no broken requirements and the actual launcher --check passed. Whitespace checks passed. No new server, model, data provider or deployment was started.
+- Live VS Code task interaction and remote CI remain separate unverified checks.
+- Continue the small import/search lesson with the student, then confirm the initial exchange and permissible historical source.

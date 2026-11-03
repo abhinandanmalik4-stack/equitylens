@@ -1,6 +1,6 @@
 # EquityLens - important conversation context
 
-Updated 2026-11-02 (Asia/Calcutta).
+Updated 2026-11-03 (Asia/Calcutta).
 
 This is a curated handover of important project discussion, not a verbatim chat export. Unrelated coursework and personal/browser screenshots are intentionally excluded.
 
@@ -68,6 +68,8 @@ Completed: initial project brief, private GitHub repository, expanded README/Abo
 Not yet implemented: real data provider, trained/evaluated forecasts, document retrieval, chatbot, user authentication or deployment. Browser layout/gestures have not been visually verified; local tests are headless. CI configuration is not proof that remote jobs passed. Do not describe planned features as completed.
 
 ## Immediate next task
+
+November 3 maintenance update: reproduced a launcher bug where Python optimization (-O or -OO, also available through PYTHONOPTIMIZE) removed the assert-based package-origin check. Replaced it with an explicit conditional failure before dependency imports. A subprocess regression verifies correct and incorrect package locations in normal, -O and -OO modes. All 51 local tests, pip check and the actual environment check passed. One coherent fix/test/log commit was prepared; no quota work was added. The beginner lesson and real-data source choice remain the next student-facing work.
 
 November 2 update: the user reported an import error in a running Streamlit instance. The project's own .venv successfully imported equitylens, making a different launch environment a likely cause; the failed process was not inspected. Added run_equitylens.py with environment checks and explicit local launch, VS Code tasks, a troubleshooting guide and the first beginner lesson. All 50 local tests passed, the actual environment check passed and pip check found no conflicts. Live use of the new VS Code task remains unverified. Three useful commits were prepared for the user's requested batch of ten; no filler was added. The user has opened app.py and shown a working dashboard in screenshots, but has not yet demonstrated understanding or confirmed the suggested widget exercises.
 

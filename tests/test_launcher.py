@@ -2,6 +2,7 @@ from contextlib import redirect_stderr, redirect_stdout
 from io import StringIO
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -35,7 +36,30 @@ class LauncherTests(unittest.TestCase):
             self.assertEqual(run.call_count, 1)
             self.assertEqual(run.call_args.args[0][0], str(self.python))
             self.assertEqual(run.call_args.kwargs["cwd"], self.root.resolve())
-            self.assertIn("assert actual == expected", run.call_args.args[0][2])
+
+    def test_package_origin_guard_survives_python_optimization(self):
+        # Stub dependencies isolate the origin check from their import time.
+        source = self.root / "src"
+        package = source / "equitylens"
+        package.mkdir(parents=True)
+        (package / "__init__.py").write_text("", encoding="utf-8")
+        for name in ("streamlit", "pandas", "numpy", "plotly"):
+            (source / f"{name}.py").write_text("", encoding="utf-8")
+        for optimize in ([], ["-O"], ["-OO"]):
+            for correct_checkout in (True, False):
+                with self.subTest(optimize=optimize, correct_checkout=correct_checkout):
+                    expected = self.root if correct_checkout else self.root / "another checkout"
+                    result = subprocess.run(
+                        [sys.executable, "-B", *optimize, "-c", launcher.ENVIRONMENT_PROBE, str(expected)],
+                        cwd=source, capture_output=True, text=True, timeout=15,
+                    )
+                    if correct_checkout:
+                        self.assertEqual(result.returncode, 0, result.stderr)
+                        self.assertIn(str(package), result.stdout)
+                    else:
+                        self.assertNotEqual(result.returncode, 0)
+                        self.assertIn("another installation", result.stderr)
+                        self.assertNotIn("Project package:", result.stdout)
 
     def test_failed_import_stops_before_server(self):
         with patch.object(launcher.subprocess, "run", return_value=subprocess.CompletedProcess([], 1, "", "Missing package")) as run:
