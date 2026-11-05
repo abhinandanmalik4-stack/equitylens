@@ -33,6 +33,14 @@ class ProviderTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_history(bad)
 
+    def test_reject_complex_prices_and_volume(self):
+        frame = DemoProvider().history(INSTRUMENTS[0]).frame
+        for column in ("close", "volume"):
+            with self.subTest(column=column):
+                invalid = frame.assign(**{column: frame[column] + 1j})
+                with self.assertRaisesRegex(ValueError, "real numbers"):
+                    validate_history(invalid)
+
     def test_reject_ambiguous_schema_and_boolean_prices(self):
         frame = DemoProvider().history(INSTRUMENTS[0]).frame
         duplicate = pd.concat([frame, frame[["close"]]], axis=1)

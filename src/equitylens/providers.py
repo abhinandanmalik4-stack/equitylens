@@ -35,6 +35,8 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
         if data[column].map(lambda v: isinstance(v, (bool, np.bool_))).any():
             raise ValueError(f"{column} must contain numbers, not booleans.")
         data[column] = pd.to_numeric(data[column], errors="raise")
+        if pd.api.types.is_complex_dtype(data[column]):
+            raise ValueError(f"{column} must contain real numbers.")
     values = data[list(OHLCV[1:])].to_numpy(dtype=float)
     if not np.isfinite(values).all():
         raise ValueError("OHLCV values must be finite.")

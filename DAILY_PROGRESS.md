@@ -192,3 +192,9 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - All 51 local automated tests passed; pip check found no broken requirements and the actual launcher --check passed. Whitespace checks passed. No new server, model, data provider or deployment was started.
 - Live VS Code task interaction and remote CI remain separate unverified checks.
 - Continue the small import/search lesson with the student, then confirm the initial exchange and permissible historical source.
+
+## 2026-11-05
+
+- Reproduced a price validation defect where a closing price with an imaginary component passed the checks. Added an explicit rejection of complex prices and volumes at the shared data boundary.
+- All 52 local tests passed, including the new regression. The whitespace check passed.
+- Recorded one focused commit, nine short of the daily target. Next is the beginner search walkthrough and historical source selection.
