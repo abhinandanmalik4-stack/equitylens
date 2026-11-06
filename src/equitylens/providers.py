@@ -32,6 +32,8 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
     if data["date"].duplicated().any() or not data["date"].is_monotonic_increasing:
         raise ValueError("Daily dates must be unique and increasing.")
     for column in OHLCV[1:]:
+        if data[column].dtype.kind in {"M", "m"}:
+            raise ValueError(f"{column} must contain numbers, not dates or durations.")
         if data[column].map(lambda v: isinstance(v, (bool, np.bool_))).any():
             raise ValueError(f"{column} must contain numbers, not booleans.")
         data[column] = pd.to_numeric(data[column], errors="raise")

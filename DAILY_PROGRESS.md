@@ -198,3 +198,9 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Reproduced a price validation defect where a closing price with an imaginary component passed the checks. Added an explicit rejection of complex prices and volumes at the shared data boundary.
 - All 52 local tests passed, including the new regression. The whitespace check passed.
 - Recorded one focused commit, nine short of the daily target. Next is the beginner search walkthrough and historical source selection.
+
+## 2026-11-06
+
+- Reproduced a validation defect where a date in the volume column became a large integer. The shared history validator now rejects date and duration columns used as prices or volume.
+- All 53 local tests passed, including the date and duration regression. The whitespace check passed.
+- Recorded one focused commit, nine short of the daily target. The search walkthrough and historical source selection are next.

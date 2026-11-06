@@ -33,6 +33,13 @@ class ProviderTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_history(bad)
 
+    def test_reject_dates_and_durations_as_volume(self):
+        frame = DemoProvider().history(INSTRUMENTS[0]).frame
+        for values in (frame.date, pd.to_timedelta(frame.volume, unit="s")):
+            with self.subTest(dtype=values.dtype):
+                with self.assertRaisesRegex(ValueError, "dates or durations"):
+                    validate_history(frame.assign(volume=values))
+
     def test_reject_complex_prices_and_volume(self):
         frame = DemoProvider().history(INSTRUMENTS[0]).frame
         for column in ("close", "volume"):
