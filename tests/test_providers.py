@@ -1,5 +1,6 @@
 import unittest
 
+import numpy as np
 import pandas as pd
 
 from equitylens.catalog import INSTRUMENTS
@@ -32,6 +33,12 @@ class ProviderTests(unittest.TestCase):
         for bad in [original.iloc[::-1], pd.concat([original, original.iloc[[-1]]]), original.iloc[:0]]:
             with self.assertRaises(ValueError):
                 validate_history(bad)
+
+    def test_reject_numeric_date_inside_object_column(self):
+        frame = DemoProvider().history(INSTRUMENTS[0]).frame.iloc[:1]
+        dates = pd.Series([np.int64(0)], dtype=object)
+        with self.assertRaisesRegex(ValueError, "explicit daily dates"):
+            validate_history(frame.assign(date=dates))
 
     def test_reject_dates_and_durations_as_volume(self):
         frame = DemoProvider().history(INSTRUMENTS[0]).frame

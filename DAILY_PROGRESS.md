@@ -204,3 +204,9 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Reproduced a validation defect where a date in the volume column became a large integer. The shared history validator now rejects date and duration columns used as prices or volume.
 - All 53 local tests passed, including the date and duration regression. The whitespace check passed.
 - Recorded one focused commit, nine short of the daily target. The search walkthrough and historical source selection are next.
+
+## 2026-11-11
+
+- Reproduced a date validation bug where a NumPy integer in an object-typed column became January 1, 1970. The shared validator now rejects numeric values before converting dates.
+- All 54 local tests passed, including the new regression. The whitespace check passed.
+- Recorded one focused commit, nine short of the daily target. The beginner search walkthrough and historical source choice are next.

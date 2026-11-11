@@ -22,7 +22,10 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
     if not frame.columns.is_unique:
         raise ValueError("History column names must be unique.")
     data = frame.loc[:, list(OHLCV)].copy()
-    if pd.api.types.is_numeric_dtype(data["date"]) or data["date"].map(lambda v: isinstance(v, (int, float, bool))).any():
+    dates = data["date"]
+    if pd.api.types.is_numeric_dtype(dates) or dates.map(
+        lambda value: pd.api.types.is_number(value) or isinstance(value, np.bool_)
+    ).any():
         raise ValueError("Dates must be explicit daily dates, not numbers or booleans.")
     data["date"] = pd.to_datetime(data["date"], errors="raise")
     if data["date"].isna().any() or data["date"].dt.tz is not None:
