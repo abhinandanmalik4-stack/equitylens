@@ -210,3 +210,9 @@ Reviewed the README, project brief, and progress log. EquityLens remains in the 
 - Reproduced a date validation bug where a NumPy integer in an object-typed column became January 1, 1970. The shared validator now rejects numeric values before converting dates.
 - All 54 local tests passed, including the new regression. The whitespace check passed.
 - Recorded one focused commit, nine short of the daily target. The beginner search walkthrough and historical source choice are next.
+
+## 2026-11-14
+
+- Fixed a validation gap where numeric conversion could round a fractional or tiny negative volume to a whole number. The validator checks textual and decimal volume values before conversion.
+- All 55 local tests passed. The new regression covers fractional and negative input as well as valid scientific notation for a whole number.
+- Recorded one focused commit, nine short of the daily target. Next is the beginner search walkthrough and historical source selection.

@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 from datetime import date
+from decimal import Decimal, InvalidOperation
 from hashlib import sha256
 from typing import Protocol
 
@@ -39,6 +40,16 @@ def validate_history(frame: pd.DataFrame) -> pd.DataFrame:
             raise ValueError(f"{column} must contain numbers, not dates or durations.")
         if data[column].map(lambda v: isinstance(v, (bool, np.bool_))).any():
             raise ValueError(f"{column} must contain numbers, not booleans.")
+        if column == "volume":
+            # Check exact values before floating-point conversion can round away a fraction.
+            for value in data[column]:
+                if isinstance(value, (str, Decimal)):
+                    try:
+                        exact = Decimal(value)
+                    except InvalidOperation as exc:
+                        raise ValueError("Volume must be a nonnegative whole number.") from exc
+                    if not exact.is_finite() or exact < 0 or exact != exact.to_integral_value():
+                        raise ValueError("Volume must be a nonnegative whole number.")
         data[column] = pd.to_numeric(data[column], errors="raise")
         if pd.api.types.is_complex_dtype(data[column]):
             raise ValueError(f"{column} must contain real numbers.")

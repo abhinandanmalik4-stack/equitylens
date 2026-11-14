@@ -58,6 +58,13 @@ class CsvImportTests(unittest.TestCase):
                 with self.assertRaises(ValueError):
                     self.load(raw)
 
+    def test_volume_fraction_is_rejected_before_rounding(self):
+        for volume in (b"1.0000000000000000001", b"-1e-400"):
+            with self.subTest(volume=volume):
+                with self.assertRaisesRegex(ValueError, "whole number"):
+                    self.load(CSV.replace(b"1000", volume))
+        self.assertEqual(self.load(CSV.replace(b"1000", b"1e3")).frame.volume.iloc[0], 1000)
+
     def test_identity_mismatch_and_demo_marker_cannot_be_erased(self):
         tagged = CSV.decode().splitlines()
         raw = (tagged[0] + ",instrument,currency,is_demo\n" + "\n".join(row + ",NSE:RELIANCE,INR,True" for row in tagged[1:])).encode()
